@@ -9,7 +9,7 @@ namespace Logic.Game {
         }
 
         public void InitiateBattle(Pawns.BattlePawn enemy) {
-            currentBattleCommander = new Commanders.BattleCommander(new Pawns.BattlePawn[]{ playerMaster.battleCommander.battlePawn, enemy });
+            //currentBattleCommander = new Commanders.BattleCommander(new Pawns.BattlePawn[]{ playerMaster.battleCommander.battlePawn, enemy });
         }
     }
 }
