@@ -4,39 +4,23 @@ using System.Collections.Generic;
 using Models.Items;
 
 namespace ConsoleClient.CommandHandlers {
-    public class InventoryCommandHandler: ICommandHandler {
+    public class InventoryCommandHandler: BaseCommandHandler {
 
         private Logic.Player.Commanders.EquipmentCommander _equipment;
 
         public InventoryCommandHandler() {
             _equipment = Game.Shared.PlayerMaster.equipmentCommander;
         }
-        public void ExecuteCommand(string command) {
-            var commands = command.Split('.');
 
-            if (commands.Length == 1) {
-                int index = command.IndexOf(' ');
-                if (index != -1) {
-                    ExecuteCommand(command.Remove(index), command.Remove(0, index + 1));
-                } else {
-                    ExecuteCommand(command, "");
-                }
-            }
-
-            Console.WriteLine();
-        }
-
-        private void ExecuteCommand(string command, string arguments) {
-            var args = Utilites.CommandUtility.ParseArguments(arguments);
-
+        protected override void ExecuteCommand(string command, Dictionary<string, string> arguments) {
             switch (command) {
                 case "help": PrintHelp();
                 break;
                 case "show": PrintInventory();
                 break;
-                case "equip": EquipItem(args);
+                case "equip": EquipItem(arguments);
                 break;
-                case "itemInfo": PrintItemInfo(args);
+                case "itemInfo": PrintItemInfo(arguments);
                 break;
                 default: Console.WriteLine("Inventory command not recognized.");
                 break;
@@ -96,9 +80,7 @@ namespace ConsoleClient.CommandHandlers {
                 result += String.Format("* Name: {0}\n", action.name);
                 result += String.Format("* Description: {0}\n", action.description);
             }
-
-
-
+            
             return result;
         }
 
@@ -106,7 +88,7 @@ namespace ConsoleClient.CommandHandlers {
             Console.WriteLine("Error: Bad arguments.");
         }
 
-        private void PrintHelp() {
+        public override void PrintHelp() {
             string helpString = 
 @"Inventory commands:
 

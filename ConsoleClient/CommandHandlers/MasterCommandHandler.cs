@@ -4,14 +4,21 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace ConsoleClient.CommandHandlers {
-    public class MasterCommandHandler: ICommandHandler {
-        Dictionary<String, ICommandHandler> handlers = new Dictionary<string, ICommandHandler>();
+    public class MasterCommandHandler: BaseCommandHandler {
+        Dictionary<String, BaseCommandHandler> handlers = new Dictionary<string, BaseCommandHandler>();
 
         public MasterCommandHandler() {
             handlers.Add("inventory", new InventoryCommandHandler());
+            handlers.Add("player", new PlayerCommandHandler());
         }
 
-        public void ExecuteCommand(string command) {
+        public new void ExecuteCommand(string command) {
+
+            if (command == "help") {
+                PrintHelp();
+                return;
+            }
+
             string[] commands = command.Split('.');
 
             if (commands.Length > 1 && handlers.ContainsKey(commands[0])) {
@@ -20,6 +27,21 @@ namespace ConsoleClient.CommandHandlers {
             } else {
                 System.Console.WriteLine("Command not recognized.");
             }
+        }
+
+        public override void PrintHelp() {
+            string help = @"Loot Quest help:
+
+Available objects:
+* player
+* inventory
+
+";
+            Console.WriteLine(help);
+            handlers.ToList().ForEach(x => {
+                x.Value.PrintHelp(); 
+                Console.WriteLine("\n");
+            } );
         }
     }
 }
