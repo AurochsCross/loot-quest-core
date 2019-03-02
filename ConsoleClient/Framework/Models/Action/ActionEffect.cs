@@ -28,5 +28,10 @@ namespace Models.Action {
             this.valueCalculation = valueCalculation;
             this.type = (int)type;
         }
+
+        public void Reset() {
+            didHit = false;
+            calculatedValue = 0f;
+        }
     }
 }

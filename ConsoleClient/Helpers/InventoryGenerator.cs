@@ -47,22 +47,6 @@ namespace ConsoleClient.Helpers {
             return "Unidentified";
         }
 
-
-
-        /* 
-        {
-            "description":"Heals user based on it's intelligence.",
-            "effects": [
-                {
-                    "hitCalculation":"",
-                    "id":0,
-                    "type":0,
-                    "valueCalculation":"([s:intelligence] * 0.1)"
-                    }
-                ],
-            "id":10306,
-            "name":"Basic Heal"
-        } */
         private ActionRoot ActionBasicHeal() {
             ActionEffect effect = new ActionEffect(0, null, "([s:intelligence] * 0.1)", ActionType.Heal);
             ActionRoot root = new ActionRoot();

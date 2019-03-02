@@ -8,8 +8,9 @@ namespace Logic.Game {
             playerMaster = new Player.Master();
         }
 
-        public void InitiateBattle(Pawns.BattlePawn enemy) {
-            //currentBattleCommander = new Commanders.BattleCommander(new Pawns.BattlePawn[]{ playerMaster.battleCommander.battlePawn, enemy });
-        }
+        public void StartEncounter(NPC.Commanders.BattleCommander npcBattleCommander) {
+            currentBattleCommander = new Commanders.BattleCommander();
+            currentBattleCommander.SetupBattle(new Bases.Commanders.BattleCommander[]{ playerMaster.battleCommander, npcBattleCommander });
+        } 
     }
 }

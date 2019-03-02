@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using System.Linq;
 
 namespace Models.Action {
     [DataContract]
@@ -14,5 +15,9 @@ namespace Models.Action {
         public string description;
         [DataMember]
         public ActionEffect[] effects;
+
+        public void Reset() {
+            effects.ToList().ForEach( x => x.Reset() );
+        }
     }
 }
