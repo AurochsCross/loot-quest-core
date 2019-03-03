@@ -5,7 +5,7 @@ using org.mariuszgromada.math.mxparser;
 
 namespace Logic.Actions.Helpers {
     public class ActionCalculationHelper {
-        private static string ReplacePlaceholdersWithValues(string calculation, Models.Action.ActionRoot action, BattlePawn source, BattlePawn target) {
+        private static string ReplacePlaceholdersWithValues(string calculation, LootQuest.Models.Action.ActionRoot action, BattlePawn source, BattlePawn target) {
             string result = calculation;
 
             result = result.Replace("[s:strength]", source.baseAttributes.strength.ToString());
@@ -26,7 +26,7 @@ namespace Logic.Actions.Helpers {
             return result;
         }
 
-        public static bool CalculateDidHit(string calculation, Models.Action.ActionRoot action, BattlePawn source, BattlePawn target) {
+        public static bool CalculateDidHit(string calculation, LootQuest.Models.Action.ActionRoot action, BattlePawn source, BattlePawn target) {
             if (calculation == null) {
                 return true;
             }
@@ -35,7 +35,7 @@ namespace Logic.Actions.Helpers {
             return new Expression(valueCalculation).calculate() == 1 ? true : false;
         }
 
-        public static float CalculateValue(string calculation, Models.Action.ActionRoot action, BattlePawn source, BattlePawn target) {
+        public static float CalculateValue(string calculation, LootQuest.Models.Action.ActionRoot action, BattlePawn source, BattlePawn target) {
             string valueCalculation = ReplacePlaceholdersWithValues(calculation, action, source, target);
             return (float)(new Expression(valueCalculation).calculate());
         }

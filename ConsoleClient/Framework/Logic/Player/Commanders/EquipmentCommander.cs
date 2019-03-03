@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Models.Items;
+using LootQuest.Models.Items;
 using System.Linq;
 
 namespace Logic.Player.Commanders {
@@ -25,22 +25,22 @@ namespace Logic.Player.Commanders {
             inventory.Add(item);
         }
 
-        public Models.Common.Attributes GetAttributes() {
-            Models.Common.Attributes result = new Models.Common.Attributes();
+        public LootQuest.Models.Common.Attributes GetAttributes() {
+            LootQuest.Models.Common.Attributes result = new LootQuest.Models.Common.Attributes();
             armor.Where(x => x.Value?.attributes != null).ToList().ForEach(x => result += x.Value.attributes);
             return result;
         }
 
-        public List<Models.Action.ActionRoot> GetActions() {
+        public List<LootQuest.Models.Action.ActionRoot> GetActions() {
             return armor.Where(x => x.Value?.action != null).Select(x => x.Value.action).ToList();
         }
         
         private static Dictionary<ArmorType, ArmorItem> emptyArmor() { 
             return new Dictionary<ArmorType, ArmorItem> 
             {  
-                {Models.Items.ArmorType.body, null},
-                {Models.Items.ArmorType.helmet, null},
-                {Models.Items.ArmorType.legs, null}
+                {LootQuest.Models.Items.ArmorType.body, null},
+                {LootQuest.Models.Items.ArmorType.helmet, null},
+                {LootQuest.Models.Items.ArmorType.legs, null}
             };
         }
     }

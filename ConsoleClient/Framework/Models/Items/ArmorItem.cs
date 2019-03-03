@@ -1,5 +1,5 @@
 
-namespace Models.Items {
+namespace LootQuest.Models.Items {
     public class ArmorItem : Item 
     {
         public ArmorType type;

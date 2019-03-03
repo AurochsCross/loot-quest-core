@@ -1,6 +1,6 @@
 using System;
 
-namespace Models.Items {
+namespace LootQuest.Models.Items {
     public class Item {
          
         public String itemName;

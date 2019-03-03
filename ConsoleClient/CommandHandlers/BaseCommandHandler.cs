@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using Models.Items;
+using LootQuest.Models.Items;
 
 namespace ConsoleClient.CommandHandlers {
     public class BaseCommandHandler {

@@ -1,5 +1,5 @@
-using Models.Items;
-using Models.Action;
+using LootQuest.Models.Items;
+using LootQuest.Models.Action;
 using System.Collections.Generic;
 
 namespace ConsoleClient.Helpers {
@@ -19,7 +19,7 @@ namespace ConsoleClient.Helpers {
         private ArmorItem SimplePants() {
 
             ArmorItem item = new ArmorItem("Simple Pants", ArmorType.legs);
-            item.attributes = new Models.Common.Attributes(5, 7, 3);
+            item.attributes = new LootQuest.Models.Common.Attributes(5, 7, 3);
             return null;
         }
 
@@ -31,7 +31,7 @@ namespace ConsoleClient.Helpers {
             string name = names[_random.Next(names.Length)] + " " + GetTypeName(armorType);
 
             ArmorItem item = new ArmorItem(name, armorType);
-            item.attributes = new Models.Common.Attributes(_random.Next(20), _random.Next(20), _random.Next(20));
+            item.attributes = new LootQuest.Models.Common.Attributes(_random.Next(20), _random.Next(20), _random.Next(20));
             item.action = _random.Next(2) == 0 ? ActionBasicAttack() : ActionBasicHeal();
 
             return item;

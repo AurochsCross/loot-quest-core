@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using LootQuest;
 
 namespace ConsoleClient.CommandHandlers {
     public class BattleCommandHandler: BaseCommandHandler {
@@ -29,7 +30,7 @@ namespace ConsoleClient.CommandHandlers {
         }
 
         private void StartDummyBattle() {
-            Models.Common.Attributes attributes = new Models.Common.Attributes(30, 5, 7);
+            LootQuest.Models.Common.Attributes attributes = new LootQuest.Models.Common.Attributes(30, 5, 7);
             Logic.NPC.Commanders.BattleCommander npcCommander = new Logic.NPC.Commanders.BattleCommander("Dummy", attributes, null);
             Game.Shared.Master.StartEncounter(npcCommander);
             Console.WriteLine("Battle started");

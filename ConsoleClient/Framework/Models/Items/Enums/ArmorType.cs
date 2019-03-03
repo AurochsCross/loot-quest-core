@@ -1,4 +1,4 @@
-namespace Models.Items {
+namespace LootQuest.Models.Items {
     public enum ArmorType {
         none,
         helmet,

@@ -1,6 +1,6 @@
 using System.Runtime.Serialization;
 
-namespace Models.Action {
+namespace LootQuest.Models.Action {
 
     [System.Serializable]
     [DataContract]

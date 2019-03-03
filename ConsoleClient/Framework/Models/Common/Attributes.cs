@@ -1,6 +1,6 @@
 using System;
 
-namespace Models.Common {
+namespace LootQuest.Models.Common {
     [Serializable]
     public class Attributes {
         public int strength { get; private set; }

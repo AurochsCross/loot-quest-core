@@ -32,13 +32,13 @@ namespace ConsoleClient {
         }
 
         private void PrepareGame() {
-            List<Models.Items.ArmorItem> items = new ConsoleClient.Helpers.InventoryGenerator().GenerateItems(10);
+            List<LootQuest.Models.Items.ArmorItem> items = new ConsoleClient.Helpers.InventoryGenerator().GenerateItems(10);
 
             items.ForEach( x => _playerMaster.equipmentCommander.AddItemToInventory(x) );
 
-            _playerMaster.equipmentCommander.Equip(items.First(x => x.type == Models.Items.ArmorType.helmet ));
-            _playerMaster.equipmentCommander.Equip(items.First(x => x.type == Models.Items.ArmorType.body ));
-            _playerMaster.equipmentCommander.Equip(items.First(x => x.type == Models.Items.ArmorType.legs ));
+            _playerMaster.equipmentCommander.Equip(items.First(x => x.type == LootQuest.Models.Items.ArmorType.helmet ));
+            _playerMaster.equipmentCommander.Equip(items.First(x => x.type == LootQuest.Models.Items.ArmorType.body ));
+            _playerMaster.equipmentCommander.Equip(items.First(x => x.type == LootQuest.Models.Items.ArmorType.legs ));
         }
     }
 }

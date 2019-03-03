@@ -5,13 +5,13 @@ namespace Logic.Player {
         public Commanders.BattleCommander battleCommander { get; private set; } 
         public Commanders.EquipmentCommander equipmentCommander { get; private set; } 
 
-        public Models.Common.Attributes Attributes { 
+        public LootQuest.Models.Common.Attributes Attributes { 
             get {
                 return equipmentCommander.GetAttributes();
             }
         }
 
-        public List<Models.Action.ActionRoot> Actions {
+        public List<LootQuest.Models.Action.ActionRoot> Actions {
             get {
                 return equipmentCommander.GetActions();
             }
