@@ -1,6 +1,6 @@
 using System.Linq;
 
-namespace Logic.Battle {
+namespace LootQuest.Logic.Battle {
     public class Battlefield {
         public Logic.Game.Commanders.BattleCommander battleManager { get; } = new Game.Commanders.BattleCommander();
         public Logic.Bases.Commanders.BattleCommander[] battleCommanders;

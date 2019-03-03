@@ -31,7 +31,7 @@ namespace ConsoleClient.CommandHandlers {
 
         private void StartDummyBattle() {
             LootQuest.Models.Common.Attributes attributes = new LootQuest.Models.Common.Attributes(30, 5, 7);
-            Logic.NPC.Commanders.BattleCommander npcCommander = new Logic.NPC.Commanders.BattleCommander("Dummy", attributes, null);
+            LootQuest.Logic.NPC.Commanders.BattleCommander npcCommander = new LootQuest.Logic.NPC.Commanders.BattleCommander("Dummy", attributes, null);
             Game.Shared.Master.StartEncounter(npcCommander);
             Console.WriteLine("Battle started");
         }

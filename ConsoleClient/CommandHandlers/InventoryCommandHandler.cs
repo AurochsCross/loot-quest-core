@@ -6,7 +6,7 @@ using LootQuest.Models.Items;
 namespace ConsoleClient.CommandHandlers {
     public class InventoryCommandHandler: BaseCommandHandler {
 
-        private Logic.Player.Commanders.EquipmentCommander _equipment;
+        private LootQuest.Logic.Player.Commanders.EquipmentCommander _equipment;
 
         public InventoryCommandHandler() {
             _equipment = Game.Shared.PlayerMaster.equipmentCommander;

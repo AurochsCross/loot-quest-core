@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Logic.Pawns {
+namespace LootQuest.Logic.Pawns {
     public class BattlePawn {
         public LootQuest.Models.Common.Attributes baseAttributes { get; private set; }
         public List<LootQuest.Models.Action.ActionRoot> actions { get; private set; }

@@ -1,22 +1,23 @@
 using System.Collections.Generic;
 using System.Linq;
+using LootQuest.Logic;
 
 namespace ConsoleClient {
     class Game {
 
         public static Game Shared;
 
-        public Logic.Game.Master Master { get { return _gameMaster; } } 
-        public Logic.Player.Master PlayerMaster { get { return _playerMaster; } }
+        public LootQuest.Logic.Game.Master Master { get { return _gameMaster; } } 
+        public LootQuest.Logic.Player.Master PlayerMaster { get { return _playerMaster; } }
 
-        Logic.Game.Master _gameMaster;
-        Logic.Player.Master _playerMaster;
+        LootQuest.Logic.Game.Master _gameMaster;
+        LootQuest.Logic.Player.Master _playerMaster;
 
         private CommandHandlers.MasterCommandHandler _commandHandler;
 
         public Game() {
             Shared = this;
-            _gameMaster = new Logic.Game.Master();
+            _gameMaster = new LootQuest.Logic.Game.Master();
             _playerMaster = _gameMaster.playerMaster;
             
             PrepareGame();

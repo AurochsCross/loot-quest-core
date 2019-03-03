@@ -7,7 +7,7 @@ using LootQuest.Models.Items;
 namespace ConsoleClient.CommandHandlers {
     public class PlayerCommandHandler : BaseCommandHandler
     {
-        private Logic.Player.Master _player;
+        private LootQuest.Logic.Player.Master _player;
 
         public PlayerCommandHandler() {
             _player = Game.Shared.PlayerMaster;

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Logic.Player {
+namespace LootQuest.Logic.Player {
     public class Master {
         public Commanders.BattleCommander battleCommander { get; private set; } 
         public Commanders.EquipmentCommander equipmentCommander { get; private set; } 

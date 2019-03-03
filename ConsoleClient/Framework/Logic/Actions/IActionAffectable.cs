@@ -1,4 +1,4 @@
-namespace Logic.Actions {
+namespace LootQuest.Logic.Actions {
     interface IActionAffectable {
         
     }

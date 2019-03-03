@@ -1,9 +1,9 @@
-using Logic.Pawns;
+using LootQuest.Logic.Pawns;
 using System;
 using System.Linq;
 using org.mariuszgromada.math.mxparser;
 
-namespace Logic.Actions.Helpers {
+namespace LootQuest.Logic.Actions.Helpers {
     public class ActionCalculationHelper {
         private static string ReplacePlaceholdersWithValues(string calculation, LootQuest.Models.Action.ActionRoot action, BattlePawn source, BattlePawn target) {
             string result = calculation;

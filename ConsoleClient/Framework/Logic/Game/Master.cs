@@ -1,4 +1,4 @@
-namespace Logic.Game {
+namespace LootQuest.Logic.Game {
     public class Master {
 
         public Player.Master playerMaster { get; private set; }

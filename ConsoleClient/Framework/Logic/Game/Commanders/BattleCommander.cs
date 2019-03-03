@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
-using Logic.Actions;
+using LootQuest.Logic.Actions;
 using org.mariuszgromada.math.mxparser;
 
-namespace Logic.Game.Commanders {
+namespace LootQuest.Logic.Game.Commanders {
     public class BattleCommander {
 
         public Battle.Battlefield Battlefield { get; private set; }

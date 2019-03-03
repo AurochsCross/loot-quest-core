@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using LootQuest.Models.Items;
 using System.Linq;
 
-namespace Logic.Player.Commanders {
+namespace LootQuest.Logic.Player.Commanders {
     public class EquipmentCommander {
         public List<Item> inventory { get; private set; } = new List<Item>();
         public Dictionary<ArmorType, ArmorItem> armor { get; private set; } = emptyArmor();

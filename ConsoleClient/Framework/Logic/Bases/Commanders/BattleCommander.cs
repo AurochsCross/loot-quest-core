@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Logic.Bases.Commanders {
+namespace LootQuest.Logic.Bases.Commanders {
     public class BattleCommander {
         public string Name { get; private set; }
         public Logic.Pawns.BattlePawn battlePawn { get; private set; }
