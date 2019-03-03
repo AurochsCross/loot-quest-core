@@ -25,6 +25,10 @@ namespace Logic.Game.Commanders {
             }
         }
 
+        public void ExecuteAction(Models.Action.ActionRoot action, Logic.Pawns.BattlePawn source) {
+            ExecuteAction(action, source, GetOtherPawn(source));
+        }
+
         private void ExecuteActionEffect(Models.Action.ActionRoot action, Models.Action.ActionEffect effect, Logic.Pawns.BattlePawn source, Logic.Pawns.BattlePawn target) {
             if (Actions.Helpers.ActionCalculationHelper.CalculateDidHit(effect.hitCalculation, action, source, target)) {
                 effect.didHit = true;
@@ -32,11 +36,13 @@ namespace Logic.Game.Commanders {
                 var value = Actions.Helpers.ActionCalculationHelper.CalculateValue(effect.valueCalculation, action, source, target);
                 effect.calculatedValue = value;
 
-                if (effect.type == 0) {
-                    target.TakeDamage((int)value);
-                } else if (effect.type == 1) {
-                    source.TakeHealing((int)value);
-                }  
+                var subject = effect.subject == Models.Action.EffectSubject.Source ? source : target;
+
+                if (effect.type == Models.Action.EffectType.Damage) {
+                    subject.TakeDamage((int)value);
+                } else if (effect.type == Models.Action.EffectType.Heal) {
+                    subject.TakeHealing((int)value);
+                }
             }
         }
     }

@@ -22,7 +22,7 @@ namespace Logic.Player {
         }
 
         public Commanders.BattleCommander CreateBattleCommander() {
-            battleCommander = new Commanders.BattleCommander(equipmentCommander.GetAttributes(), equipmentCommander.GetActions());
+            battleCommander = new Commanders.BattleCommander(Attributes, Actions);
             return battleCommander;
         }
     }

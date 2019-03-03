@@ -10,6 +10,7 @@ namespace ConsoleClient.CommandHandlers {
         public MasterCommandHandler() {
             handlers.Add("inventory", new InventoryCommandHandler());
             handlers.Add("player", new PlayerCommandHandler());
+            handlers.Add("battle", new BattleCommandHandler());
         }
 
         public new void ExecuteCommand(string command) {

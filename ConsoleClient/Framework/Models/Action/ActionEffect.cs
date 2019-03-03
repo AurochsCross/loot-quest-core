@@ -1,7 +1,6 @@
 using System.Runtime.Serialization;
 
 namespace Models.Action {
-    public enum ActionType { Damage, Heal };
 
     [System.Serializable]
     [DataContract]
@@ -10,7 +9,10 @@ namespace Models.Action {
         public int id;
         
         [DataMember]
-        public int type;
+        public EffectType type;
+
+        [DataMember]
+        public EffectSubject subject;
 
         [DataMember]
         public string hitCalculation;
@@ -22,11 +24,12 @@ namespace Models.Action {
 
         public float calculatedValue = 0f;
 
-        public ActionEffect(int id, string hitCalculation, string valueCalculation, ActionType type) {
+        public ActionEffect(int id, string hitCalculation, string valueCalculation, EffectType type, EffectSubject subject) {
             this.id = id;
             this.hitCalculation = hitCalculation;
             this.valueCalculation = valueCalculation;
-            this.type = (int)type;
+            this.type = type;
+            this.subject = subject;
         }
 
         public void Reset() {

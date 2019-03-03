@@ -1,14 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
-
   <ItemGroup>
-  <Reference Include="mXparser">
-    <HintPath>Libs\mXparser.dll</HintPath>
-  </Reference>
-</ItemGroup>
-
+    <PackageReference Include="MathParser.org-mXparser" Version="4.3.3"/>
+  </ItemGroup>
 </Project>

@@ -27,6 +27,10 @@ namespace Logic.Actions.Helpers {
         }
 
         public static bool CalculateDidHit(string calculation, Models.Action.ActionRoot action, BattlePawn source, BattlePawn target) {
+            if (calculation == null) {
+                return true;
+            }
+            
             string valueCalculation = String.Format("if({0}, 1, 0)", ReplacePlaceholdersWithValues(calculation, action, source, target));
             return new Expression(valueCalculation).calculate() == 1 ? true : false;
         }

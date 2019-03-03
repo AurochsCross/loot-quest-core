@@ -48,7 +48,7 @@ namespace ConsoleClient.Helpers {
         }
 
         private ActionRoot ActionBasicHeal() {
-            ActionEffect effect = new ActionEffect(0, null, "([s:intelligence] * 0.1)", ActionType.Heal);
+            ActionEffect effect = new ActionEffect(0, null, "([s:intelligence] * 0.1)", EffectType.Heal, EffectSubject.Source);
             ActionRoot root = new ActionRoot();
             root.id = 0;
             root.name = "Basic Heal";
@@ -59,7 +59,7 @@ namespace ConsoleClient.Helpers {
         }
 
         private ActionRoot ActionBasicAttack() {
-            ActionEffect effect = new ActionEffect(0, null, "([s:strength] * 0.1)", ActionType.Damage);
+            ActionEffect effect = new ActionEffect(0, null, "([s:strength] * 0.1)", EffectType.Damage, EffectSubject.Target);
             ActionRoot root = new ActionRoot();
             root.id = 0;
             root.name = "Basic Attack";

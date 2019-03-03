@@ -10,7 +10,7 @@ namespace Logic.Game {
 
         public void StartEncounter(NPC.Commanders.BattleCommander npcBattleCommander) {
             currentBattleCommander = new Commanders.BattleCommander();
-            currentBattleCommander.SetupBattle(new Bases.Commanders.BattleCommander[]{ playerMaster.battleCommander, npcBattleCommander });
+            currentBattleCommander.SetupBattle(new Bases.Commanders.BattleCommander[]{ playerMaster.CreateBattleCommander(), npcBattleCommander });
         } 
     }
 }
