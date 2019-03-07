@@ -12,8 +12,8 @@ namespace LootQuest.Logic.Pawns {
         public BattlePawn(LootQuest.Models.Common.Attributes baseAttributes, List<LootQuest.Models.Action.ActionRoot> actions) {
             this.baseAttributes = baseAttributes;
             this.actions = actions;
-            this.maxHitPoints = baseAttributes.strength;
-            this.currentHitPoints = baseAttributes.strength;
+            this.maxHitPoints = baseAttributes.Hp ?? baseAttributes.strength;
+            this.currentHitPoints = baseAttributes.Hp ?? baseAttributes.strength;
         }
 
         public void TakeDamage(int damage) {
