@@ -19,17 +19,20 @@ namespace LootQuest.Models.Action {
 
         [DataMember]
         public string valueCalculation;
+        [DataMember]
+        public float Delay;
 
         public bool didHit = false;
 
         public float calculatedValue = 0f;
 
-        public ActionEffect(int id, string hitCalculation, string valueCalculation, EffectType type, EffectSubject subject) {
+        public ActionEffect(int id, string hitCalculation, string valueCalculation, EffectType type, EffectSubject subject, float delay) {
             this.id = id;
             this.hitCalculation = hitCalculation;
             this.valueCalculation = valueCalculation;
             this.type = type;
             this.subject = subject;
+            this.Delay = delay;
         }
 
         public void Reset() {

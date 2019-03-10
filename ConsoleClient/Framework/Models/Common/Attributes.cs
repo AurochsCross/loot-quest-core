@@ -12,7 +12,7 @@ namespace LootQuest.Models.Common {
             this.strength = 0;
             this.dexterity = 0;
             this.intelligence = 0;
-            Hp = 0;
+            Hp = null;
         }
         public Attributes(int strength, int dexterity, int intelligence, int? hp = null) {
             this.strength = strength;

@@ -2,7 +2,7 @@ using System;
 
 namespace LootQuest.Models.Items {
     public class Item {
-         
+        public int Id;
         public String itemName;
         public Models.Common.Attributes attributes = new Models.Common.Attributes();
 
@@ -10,7 +10,8 @@ namespace LootQuest.Models.Items {
 
         private Models.Action.ActionRoot actionCache;
 
-        public Item(string name) {
+        public Item(int id, string name) {
+            this.Id = id;
             this.itemName = name;
         }
     }

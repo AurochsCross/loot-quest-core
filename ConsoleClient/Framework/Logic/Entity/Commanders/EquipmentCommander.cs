@@ -3,36 +3,37 @@ using System.Collections.Generic;
 using LootQuest.Models.Items;
 using System.Linq;
 
-namespace LootQuest.Logic.Player.Commanders {
+namespace LootQuest.Logic.Entity.Commanders {
     public class EquipmentCommander {
-        public List<Item> inventory { get; private set; } = new List<Item>();
-        public Dictionary<ArmorType, ArmorItem> armor { get; private set; } = emptyArmor();
+        public List<Item> Inventory { get; private set; } = new List<Item>();
+        public Dictionary<ArmorType, ArmorItem> Armor { get; private set; } = emptyArmor();
+        public List<Item> OtherEquipment { get; private set; }
 
         public void Equip(ArmorItem item) {
-            inventory.Remove(item);
+            Inventory.Remove(item);
             Unequip(item.type);
-            armor[item.type] = item;
+            Armor[item.type] = item;
         }
 
         public void Unequip(ArmorType type) {
-            if (armor[type] != null) {
-                inventory.Add(armor[type]);
-                armor[type] = null;
+            if (Armor[type] != null) {
+                Inventory.Add(Armor[type]);
+                Armor[type] = null;
             }
         }
 
-        public void AddItemToInventory(ArmorItem item) {
-            inventory.Add(item);
+        public void AddItemToInventory(Item item) {
+            Inventory.Add(item);
         }
 
         public LootQuest.Models.Common.Attributes GetAttributes() {
             LootQuest.Models.Common.Attributes result = new LootQuest.Models.Common.Attributes();
-            armor.Where(x => x.Value?.attributes != null).ToList().ForEach(x => result += x.Value.attributes);
+            Armor.Where(x => x.Value?.attributes != null).ToList().ForEach(x => result += x.Value.attributes);
             return result;
         }
 
         public List<LootQuest.Models.Action.ActionRoot> GetActions() {
-            return armor.Where(x => x.Value?.action != null).Select(x => x.Value.action).ToList();
+            return Armor.Where(x => x.Value?.action != null).Select(x => x.Value.action).ToList();
         }
         
         private static Dictionary<ArmorType, ArmorItem> emptyArmor() { 

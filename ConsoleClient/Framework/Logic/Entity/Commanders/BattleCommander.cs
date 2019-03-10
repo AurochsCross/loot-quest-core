@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using LootQuest.Models.Action;
+using LootQuest.Models.Common;
 
-namespace LootQuest.Logic.Bases.Commanders {
+namespace LootQuest.Logic.Entity.Commanders {
     public class BattleCommander {
         public string Name { get; private set; }
         public Logic.Pawns.BattlePawn battlePawn { get; private set; }

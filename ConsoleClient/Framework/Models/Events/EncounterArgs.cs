@@ -17,6 +17,5 @@ namespace LootQuest.Models.Events {
         }
 
         public int InstanceId = 0;
-
     }
 }

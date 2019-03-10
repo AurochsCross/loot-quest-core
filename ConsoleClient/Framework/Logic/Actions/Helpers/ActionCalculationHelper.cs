@@ -27,7 +27,7 @@ namespace LootQuest.Logic.Actions.Helpers {
         }
 
         public static bool CalculateDidHit(string calculation, LootQuest.Models.Action.ActionRoot action, BattlePawn source, BattlePawn target) {
-            if (calculation == null) {
+            if (calculation == null || string.IsNullOrWhiteSpace(calculation)) {
                 return true;
             }
             
