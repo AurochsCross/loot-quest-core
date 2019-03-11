@@ -4,28 +4,32 @@ using System.Linq;
 
 namespace LootQuest.Logic.Game.Commanders {
     public class ExploreCommander {
-        public List<Pawns.ExplorePawn> Hostiles { get; private set; } = new List<Pawns.ExplorePawn>();
-        public LootQuest.Logic.Pawns.ExplorePawn Player;
+        public List<Entity.Master> Entities { get; private set; } = new List<Entity.Master>();
+        public List<Entity.Master> Hostiles { get; private set; } = new List<Entity.Master>();
         private Master _master;
 
         public ExploreCommander(Master master) {
             _master = master;
         }
 
-        public void RegisterHostile(LootQuest.Logic.Pawns.ExplorePawn pawn) {
-            Hostiles.Add(pawn);
+        public void RegisterEntity(Entity.Master entity, bool isHostile = false) {
+            Entities.Add(entity);
+            if(isHostile) {
+                Hostiles.Add(entity);
+            }
         }
 
-        public void MovePlayer(Position position) {
-            Player.CurrentPosition = position;
-            var hostile = HostileAtPosition(position);
-            if (hostile != null) {
+        public void MoveEntity(Entity.Master entity, Position position) {
+            entity.ExplorePawn.CurrentPosition = position;
+
+            var hostile = HostileAtPosition(entity.ExplorePawn.CurrentPosition);
+            if (entity == _master.PlayerMaster && hostile != null) {
                 _master.StartEncounter(hostile);
             }
         }
 
-        private LootQuest.Logic.Pawns.ExplorePawn HostileAtPosition(Position position) {
-            return Hostiles.Where( x => x.CurrentPosition == position).FirstOrDefault();
+        private Entity.Master HostileAtPosition(Position position) {
+            return Hostiles.Where( x => x.ExplorePawn.CurrentPosition == position).FirstOrDefault();
         }
 
     }

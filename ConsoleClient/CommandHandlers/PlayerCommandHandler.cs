@@ -7,10 +7,10 @@ using LootQuest.Models.Items;
 namespace ConsoleClient.CommandHandlers {
     public class PlayerCommandHandler : BaseCommandHandler
     {
-        private LootQuest.Logic.Player.Master _player;
+        private LootQuest.Logic.Entity.Master _player;
 
         public PlayerCommandHandler() {
-            _player = Game.Shared.PlayerMaster;
+            _player = Game.Shared.Master.PlayerMaster;
         }
 
         protected override void ExecuteCommand(string command, Dictionary<string, string> arguments) {
@@ -27,17 +27,17 @@ namespace ConsoleClient.CommandHandlers {
         }
 
         private void PrintStats() {
-            var stats = _player.Attributes;
+            // var stats = _player.Attributes;
 
-            Console.WriteLine(String.Format("Strength: {0}", stats.strength));
-            Console.WriteLine(String.Format("Dexterity: {0}", stats.dexterity));
-            Console.WriteLine(String.Format("Intelligence: {0}", stats.intelligence));
+            // Console.WriteLine(String.Format("Strength: {0}", stats.strength));
+            // Console.WriteLine(String.Format("Dexterity: {0}", stats.dexterity));
+            // Console.WriteLine(String.Format("Intelligence: {0}", stats.intelligence));
         }
 
         private void PrintActions() {
-            var actions = _player.Actions;
+            // var actions = _player.Actions;
 
-            actions.ForEach( x => Console.WriteLine(x.name + ": " + x.description));
+            // actions.ForEach( x => Console.WriteLine(x.name + ": " + x.description));
         }
 
         public override void PrintHelp() {

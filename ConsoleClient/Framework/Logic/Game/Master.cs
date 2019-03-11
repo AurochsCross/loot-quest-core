@@ -1,3 +1,5 @@
+using System.Linq;
+
 namespace LootQuest.Logic.Game {
     public class Master {
 
@@ -8,24 +10,27 @@ namespace LootQuest.Logic.Game {
 
         #endregion
 
-        public Player.Master playerMaster { get; private set; }
+        public Entity.Master PlayerMaster { get; private set; }
         
-        public Commanders.BattleCommander currentBattleCommander { get; private set; }
+        public Commanders.BattleCommander CurrentBattleCommander { get; private set; }
 
         public Commanders.ExploreCommander ExploreCommander { get; private set; }
 
         public Master() {
             float time = Utilities.Time.CurrentTime;
-            playerMaster = new Player.Master();
             ExploreCommander = new Commanders.ExploreCommander(this);
-            ExploreCommander.Player = playerMaster.ExplorePawn;
         }
 
-        public void StartEncounter(LootQuest.Logic.Pawns.ExplorePawn npc) {
-            currentBattleCommander = new Commanders.BattleCommander(this);
-            currentBattleCommander.SetupBattle(new Bases.Commanders.BattleCommander[]{ playerMaster.CreateBattleCommander(), npc.BattleCommander });
+        public void SetPlayer(Entity.Master playerMaster) {
+            PlayerMaster = playerMaster;
+        }
 
-            OnEncounterStarted(this, new Models.Events.EncounterArgs(npc.InstanceId, npc.BattleCommander));
+        public void StartEncounter(LootQuest.Logic.Entity.Master npc) {
+            CurrentBattleCommander = new Commanders.BattleCommander(this);
+            var participants = new Entity.Commanders.BattleCommander[]{ PlayerMaster.GenerateBattleCommander(CurrentBattleCommander), npc.GenerateBattleCommander(CurrentBattleCommander) };
+            CurrentBattleCommander.SetupBattle(participants);
+
+            OnEncounterStarted(this, new Models.Events.EncounterArgs(CurrentBattleCommander, participants.Select(x => x.Master).ToArray()));
         }
     }
 }

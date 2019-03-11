@@ -6,10 +6,10 @@ using LootQuest.Models.Items;
 namespace ConsoleClient.CommandHandlers {
     public class InventoryCommandHandler: BaseCommandHandler {
 
-        private LootQuest.Logic.Player.Commanders.EquipmentCommander _equipment;
+        private LootQuest.Logic.Entity.Commanders.EquipmentCommander _equipment;
 
         public InventoryCommandHandler() {
-            _equipment = Game.Shared.PlayerMaster.equipmentCommander;
+            _equipment = Game.Shared.Master.PlayerMaster.EquipmentCommander;
         }
 
         protected override void ExecuteCommand(string command, Dictionary<string, string> arguments) {
@@ -29,16 +29,16 @@ namespace ConsoleClient.CommandHandlers {
 
         private void PrintInventory() {
             Console.WriteLine("Equiped: ");
-            _equipment.armor.Where(x => x.Value != null).ToList().ForEach( x => Console.WriteLine(String.Format("{0}: {1}", x.Key, x.Value.itemName)) );
+            _equipment.Armor.Where(x => x.Value != null).ToList().ForEach( x => Console.WriteLine(String.Format("{0}: {1}", x.Key, x.Value.itemName)) );
 
             Console.WriteLine("\nInventory: ");
-            _equipment.inventory.ForEach( x => Console.WriteLine(String.Format("{0}", x.itemName)));
+            _equipment.Inventory.ForEach( x => Console.WriteLine(String.Format("{0}", x.itemName)));
         }
 
         private void EquipItem(Dictionary<string, string> args) {
             string name;
             if (args.TryGetValue("name", out name) || args.TryGetValue("arg", out name)) {
-                ArmorItem item = (ArmorItem)_equipment.inventory.Where(x => x.itemName == name)?.FirstOrDefault();
+                ArmorItem item = (ArmorItem)_equipment.Inventory.Where(x => x.itemName == name)?.FirstOrDefault();
                 if (item != null) {
                     _equipment.Equip(item);
                     Console.WriteLine(item.itemName + " equiped.");
@@ -53,7 +53,7 @@ namespace ConsoleClient.CommandHandlers {
         private void PrintItemInfo(Dictionary<string, string> args) {
             string name;
             if (args.TryGetValue("name", out name) || args.TryGetValue("arg", out name)) {
-                ArmorItem item = (ArmorItem)_equipment.inventory.Where(x => x.itemName == name)?.FirstOrDefault();
+                ArmorItem item = (ArmorItem)_equipment.Inventory.Where(x => x.itemName == name)?.FirstOrDefault();
                 if (item != null) {
                     Console.WriteLine(GetItemInfo(item));
                 } else {

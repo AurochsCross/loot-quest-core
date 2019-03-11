@@ -5,9 +5,14 @@ using System.Linq;
 
 namespace LootQuest.Logic.Entity.Commanders {
     public class EquipmentCommander {
+        public Master Master { get; private set; }
         public List<Item> Inventory { get; private set; } = new List<Item>();
         public Dictionary<ArmorType, ArmorItem> Armor { get; private set; } = emptyArmor();
         public List<Item> OtherEquipment { get; private set; }
+
+        public EquipmentCommander(Master master) {
+            this.Master = master;
+        }
 
         public void Equip(ArmorItem item) {
             Inventory.Remove(item);

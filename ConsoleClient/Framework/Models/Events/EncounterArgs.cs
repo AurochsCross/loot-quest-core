@@ -3,19 +3,12 @@ using System;
 namespace LootQuest.Models.Events {
     public class EncounterArgs: EventArgs {
         
-        private LootQuest.Logic.Bases.Commanders.BattleCommander _npcBattleCommander;
+        public LootQuest.Logic.Game.Commanders.BattleCommander BattleCommander { get; private set; }
+        public LootQuest.Logic.Entity.Master[] EncounterParticipatns { get; private set; }
 
-        public EncounterArgs(int instanceId, LootQuest.Logic.Bases.Commanders.BattleCommander npcCommander) {
-            _npcBattleCommander = npcCommander;
-            InstanceId = instanceId;
+        public EncounterArgs(LootQuest.Logic.Game.Commanders.BattleCommander battleCommander, LootQuest.Logic.Entity.Master[] participants) {
+            EncounterParticipatns = participants;
+            BattleCommander = battleCommander;
         }
-
-        public LootQuest.Logic.Bases.Commanders.BattleCommander NpcBattleCommander {
-            get {
-                return _npcBattleCommander;
-            }
-        }
-
-        public int InstanceId = 0;
     }
 }

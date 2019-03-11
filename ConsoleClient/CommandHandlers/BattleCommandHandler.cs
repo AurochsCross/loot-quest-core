@@ -22,37 +22,37 @@ namespace ConsoleClient.CommandHandlers {
         }
 
         private void PrintBattleState() {
-            Game.Shared.Master.currentBattleCommander.Commanders.ToList().ForEach( x => {
+            Game.Shared.Master.CurrentBattleCommander.Commanders.ToList().ForEach( x => {
                 Console.WriteLine(x.Name);
-                Console.WriteLine(String.Format("Hp: {0}/{1}", x.battlePawn.currentHitPoints, x.battlePawn.maxHitPoints));
+                Console.WriteLine(String.Format("Hp: {0}/{1}", x.BattlePawn.currentHitPoints, x.BattlePawn.maxHitPoints));
                 Console.WriteLine();
             } );
         }
 
         private void StartDummyBattle() {
-            LootQuest.Models.Common.Attributes attributes = new LootQuest.Models.Common.Attributes(30, 5, 7);
-            LootQuest.Logic.NPC.Commanders.BattleCommander npcCommander = new LootQuest.Logic.NPC.Commanders.BattleCommander("Dummy", attributes, null);
-            Game.Shared.Master.StartEncounter(npcCommander);
-            Console.WriteLine("Battle started");
+            // LootQuest.Models.Common.Attributes attributes = new LootQuest.Models.Common.Attributes(30, 5, 7);
+            // LootQuest.Logic.NPC.Commanders.BattleCommander npcCommander = new LootQuest.Logic.NPC.Commanders.BattleCommander("Dummy", attributes, null);
+            // Game.Shared.Master.StartEncounter(npcCommander);
+            // Console.WriteLine("Battle started");
         }
 
         private void UseAction() {
-            var actions = Game.Shared.PlayerMaster.Actions;
+            // var actions = Game.Shared.PlayerMaster.Actions;
             
-            int id = 0;
+            // int id = 0;
 
-            actions.ForEach( x =>  { 
-                Console.WriteLine(id + ": " + x.name + " - " + x.description);
-                id++; 
-            });
+            // actions.ForEach( x =>  { 
+            //     Console.WriteLine(id + ": " + x.name + " - " + x.description);
+            //     id++; 
+            // });
 
-            Console.WriteLine();
-            Console.Write("Action to use: ");
-            int actionUsed = int.Parse(Console.ReadLine());
+            // Console.WriteLine();
+            // Console.Write("Action to use: ");
+            // int actionUsed = int.Parse(Console.ReadLine());
 
-            Game.Shared.Master.currentBattleCommander.ExecuteAction(actions[actionUsed], Game.Shared.PlayerMaster.battleCommander.battlePawn);
+            // Game.Shared.Master.currentBattleCommander.ExecuteAction(actions[actionUsed], Game.Shared.PlayerMaster.battleCommander.battlePawn);
 
-            Console.WriteLine("Action used: " + actions[actionUsed].name);
+            // Console.WriteLine("Action used: " + actions[actionUsed].name);
         }
 
         public override void PrintHelp() {

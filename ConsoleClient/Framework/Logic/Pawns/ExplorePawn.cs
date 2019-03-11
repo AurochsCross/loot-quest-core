@@ -2,18 +2,16 @@ using LootQuest.Models.Exploring;
 
 namespace LootQuest.Logic.Pawns {
     public class ExplorePawn {
-        public LootQuest.Logic.Bases.Commanders.BattleCommander BattleCommander;
+        public LootQuest.Logic.Entity.Master Master { get; private set; }
         public Position CurrentPosition;
 
-        public int InstanceId { get; private set; }
-
-        public ExplorePawn(int instanceId = 0) {
-            InstanceId = instanceId;
+        public ExplorePawn(LootQuest.Logic.Entity.Master master) {
+            Master = master;
             CurrentPosition = new Position();
         }
 
-        public ExplorePawn(Position position, int instanceId = 0) {
-            InstanceId = instanceId;
+        public ExplorePawn(LootQuest.Logic.Entity.Master master, Position position) {
+            Master = master;
             CurrentPosition = position;
         }
     }

@@ -18,7 +18,7 @@ namespace ConsoleClient.Helpers {
 
         private ArmorItem SimplePants() {
 
-            ArmorItem item = new ArmorItem("Simple Pants", ArmorType.legs);
+            ArmorItem item = new ArmorItem(new System.Random().Next(), "Simple Pants", ArmorType.legs);
             item.attributes = new LootQuest.Models.Common.Attributes(5, 7, 3);
             return null;
         }
@@ -30,7 +30,7 @@ namespace ConsoleClient.Helpers {
             ArmorType armorType = (ArmorType)(_random.Next(3) + 1);
             string name = names[_random.Next(names.Length)] + " " + GetTypeName(armorType);
 
-            ArmorItem item = new ArmorItem(name, armorType);
+            ArmorItem item = new ArmorItem(new System.Random().Next(), name, armorType);
             item.attributes = new LootQuest.Models.Common.Attributes(_random.Next(20), _random.Next(20), _random.Next(20));
             item.action = _random.Next(2) == 0 ? ActionBasicAttack() : ActionBasicHeal();
 
@@ -48,7 +48,7 @@ namespace ConsoleClient.Helpers {
         }
 
         private ActionRoot ActionBasicHeal() {
-            ActionEffect effect = new ActionEffect(0, null, "([s:intelligence] * 0.1)", EffectType.Heal, EffectSubject.Source);
+            ActionEffect effect = new ActionEffect(0, null, "([s:intelligence] * 0.1)", EffectType.Heal, EffectSubject.Source, 0f);
             ActionRoot root = new ActionRoot();
             root.id = 0;
             root.name = "Basic Heal";
@@ -59,7 +59,7 @@ namespace ConsoleClient.Helpers {
         }
 
         private ActionRoot ActionBasicAttack() {
-            ActionEffect effect = new ActionEffect(0, null, "([s:strength] * 0.1)", EffectType.Damage, EffectSubject.Target);
+            ActionEffect effect = new ActionEffect(0, null, "([s:strength] * 0.1)", EffectType.Damage, EffectSubject.Target, 0f);
             ActionRoot root = new ActionRoot();
             root.id = 0;
             root.name = "Basic Attack";
