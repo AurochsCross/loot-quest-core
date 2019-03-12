@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System;
 
 namespace LootQuest.Logic.Entity {
-    public class Master {
+    public class Master: Models.Representable {
         public int InstanceId {
             get {
                 if (_instanceId == 0) {

@@ -8,8 +8,6 @@ namespace LootQuest.Models.Items {
 
         public Models.Action.ActionRoot action;
 
-        private Models.Action.ActionRoot actionCache;
-
         public Item(int id, string name) {
             this.Id = id;
             this.itemName = name;
